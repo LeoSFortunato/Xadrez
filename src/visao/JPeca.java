@@ -10,6 +10,7 @@ public class JPeca extends JLabel {
 
     public JPeca(Peca peca) {
         this.peca = peca;
+        this.setIcon(new ImageIcon(peca.getImagem()));
     }
 
     public Peca getPeca() {

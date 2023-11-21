@@ -23,4 +23,11 @@ public class JCelula extends JPanel {
         }
     }
 
+    public int getLinha() {
+        return this.linha;
+    }
+
+    public int getColuna() {
+        return this.coluna;
+    }
 }
