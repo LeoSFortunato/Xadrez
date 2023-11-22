@@ -1,5 +1,7 @@
 package modelo;
 
+import visao.JXadrex;
+
 public class Tabuleiro {
 
     private Peca[][] pecas;
@@ -50,7 +52,7 @@ public class Tabuleiro {
         this.adicionarPeca(reiBranco);
         this.adicionarPeca(reiPreto);
 
-        for (int i = 0; i< 8; i++) {
+        for (int i = 0; i < 8; i++) {
             Peao peaoBranco = new Peao(EnumCor.BRANCO, 1, i);
             this.adicionarPeca(peaoBranco);
 
@@ -94,12 +96,14 @@ public class Tabuleiro {
             this.inverteVez();
         }
     }
+
     public void inverteVez() {
         if (this.vez.equals(EnumCor.BRANCO)) {
             this.vez = EnumCor.PRETO;
         } else {
             this.vez = EnumCor.BRANCO;
         }
+        JXadrex.setVez(this.vez);
     }
 
     public void realizaJogada(int linha, int coluna) {
