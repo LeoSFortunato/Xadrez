@@ -1,5 +1,6 @@
 package modelo;
 
+import controle.ControlaTempo;
 import visao.JXadrex;
 
 public class Tabuleiro {
@@ -7,10 +8,11 @@ public class Tabuleiro {
     private Peca[][] pecas;
     private Peca pecaSelecionada = null;
     private EnumCor vez = EnumCor.BRANCO;
-
     public static final int TEMPO_JOGADA = 10000;
+    private ControlaTempo controleTempo;
 
-    public Tabuleiro() {
+    public Tabuleiro(ControlaTempo controleTempo) {
+        this.controleTempo = controleTempo;
         this.pecas = new Peca[8][8];
         Torre torreBranca1 = new Torre(EnumCor.BRANCO, 0, 0);
         Torre torreBranca2 = new Torre(EnumCor.BRANCO, 0, 7);
@@ -62,6 +64,18 @@ public class Tabuleiro {
 
     }
 
+    public EnumCor getVez() {
+        return this.vez;
+    }
+
+    public Peca getPecaSelecionada() {
+        return this.pecaSelecionada;
+    }
+
+    public void setPecaSelecionada(Peca peca) {
+        this.pecaSelecionada = peca;
+    }
+
     public Peca getPeca(int linha, int coluna) {
         return this.pecas[linha][coluna];
     }
@@ -104,6 +118,7 @@ public class Tabuleiro {
             this.vez = EnumCor.BRANCO;
         }
         JXadrex.setVez(this.vez);
+        controleTempo.zeraCronometro();
     }
 
     public void realizaJogada(int linha, int coluna) {
