@@ -46,6 +46,10 @@ public class JTabuleiro extends JPanel implements MouseListener {
             return this.tabuleiro;
         }
 
+        public void setTabuleiro(Tabuleiro tabuleiro) {
+            this.tabuleiro = tabuleiro;
+        }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         JCelula jCelula = (JCelula) e.getSource();

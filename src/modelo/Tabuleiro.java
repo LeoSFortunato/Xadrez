@@ -117,7 +117,7 @@ public class Tabuleiro {
         } else {
             this.vez = EnumCor.BRANCO;
         }
-        JXadrex.setVez(this.vez);
+        JXadrex.setVez(this.  vez);
         controleTempo.zeraCronometro();
     }
 
