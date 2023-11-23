@@ -18,6 +18,7 @@ public class JTabuleiro extends JPanel implements MouseListener {
     }
 
     public void desenhaTabuleiro() {
+        JXadrex.painelCemiterio.removeAll();
         this.removeAll();
         this.setLayout(new GridLayout(8, 8));
         for (int i = 0; i < 8; i++) {
@@ -38,6 +39,9 @@ public class JTabuleiro extends JPanel implements MouseListener {
                 jCelula.addMouseListener(this);
 
             }
+        }
+        for (Peca pecaRemovida : this.tabuleiro.getPecasForaDeJogo()) {
+            JXadrex.painelCemiterio.add(new JPeca(pecaRemovida));
         }
         this.revalidate();
     }

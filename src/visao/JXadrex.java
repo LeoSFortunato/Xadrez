@@ -17,7 +17,7 @@ public class JXadrex extends JFrame {
     private JButton btPassavez;
     private final ControlaTempo controleTempo;
     private final JTabuleiro jTabuleiro;
-    private final JPanel painelCemiterio;
+    public static final JPanel painelCemiterio = new JPanel();
     public JProgressBar pbTempo;
 
     public JXadrex() {
@@ -48,8 +48,7 @@ public class JXadrex extends JFrame {
             }
         });
 
-        painelCemiterio = new JPanel();
-        painelCemiterio.setLayout(new FlowLayout());
+        //painelCemiterio.setLayout(new FlowLayout());
         this.add(painelCemiterio, BorderLayout.EAST);
 
         btPassavez = new JButton("Passar a Vez");

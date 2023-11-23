@@ -3,6 +3,9 @@ package modelo;
 import controle.ControlaTempo;
 import visao.JXadrex;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tabuleiro {
 
     private Peca[][] pecas;
@@ -10,10 +13,13 @@ public class Tabuleiro {
     private EnumCor vez = EnumCor.BRANCO;
     public static final int TEMPO_JOGADA = 10000;
     private ControlaTempo controleTempo;
+    private List<Peca> pecasForaDeJogo;
 
     public Tabuleiro(ControlaTempo controleTempo) {
         this.controleTempo = controleTempo;
         this.pecas = new Peca[8][8];
+        this.pecasForaDeJogo = new ArrayList<>();
+
         Torre torreBranca1 = new Torre(EnumCor.BRANCO, 0, 0);
         Torre torreBranca2 = new Torre(EnumCor.BRANCO, 0, 7);
         this.adicionarPeca(torreBranca1);
@@ -62,6 +68,10 @@ public class Tabuleiro {
             this.adicionarPeca(peaoPreto);
         }
 
+    }
+
+    public List<Peca> getPecasForaDeJogo() {
+        return pecasForaDeJogo;
     }
 
     public EnumCor getVez() {
@@ -132,11 +142,16 @@ public class Tabuleiro {
             if (pecaSelecionada == peca) {
                 this.selecionaPeca(peca);
             } else {
-                if (peca == null || !peca.getCor().equals(this.pecaSelecionada.getCor())) {
+                if (peca == null) { //mover pra uma célula vazia
+                    this.movePeca(this.pecaSelecionada, linha, coluna);
+                }
+                if (peca != null && !peca.getCor().equals(this.pecaSelecionada.getCor())) { // capturar o adversário
+                    peca.setEliminada(true);
+                    this.pecasForaDeJogo.add(peca);
                     this.movePeca(this.pecaSelecionada, linha, coluna);
                 }
             }
         }
-
     }
+
 }
