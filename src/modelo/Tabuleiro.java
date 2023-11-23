@@ -115,8 +115,13 @@ public class Tabuleiro {
             this.pecas[peca.getLinha()][peca.getColuna()] = null;
             peca.setLinha(novaLinha);
             peca.setColuna(novaColuna);
+            if (peca instanceof Peao) {
+                Peao peao = (Peao) peca;
+                peao.setPrimeiroMovimento(false);
+            }
             this.setPeca(peca);
             this.selecionaPeca(peca);
+
             this.inverteVez();
         }
     }

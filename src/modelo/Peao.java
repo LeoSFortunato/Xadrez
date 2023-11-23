@@ -14,7 +14,15 @@ public class Peao extends Peca {
 
     @Override
     public boolean validaMovimento(int linhaDestino, int colunaDestino) {
-
+        Peca pecaDestino = getTabuleiro().getPeca(linhaDestino, colunaDestino);
+        if (pecaDestino == null && colunaDestino != getColuna()) {
+            return false;
+        }
         return true;
     }
+
+    public void setPrimeiroMovimento(boolean primeiroMovimento) {
+        this.primeiroMovimento = primeiroMovimento;
+    }
+
 }
